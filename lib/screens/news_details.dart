@@ -16,10 +16,12 @@ class NewsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(article);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        leadingWidth: 20,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             const CircleAvatar(
               backgroundImage: AssetImage('assets/images/news01.png'),
@@ -33,9 +35,7 @@ class NewsDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    article.author == null || article.author == ""
-                        ? 'Anonymous'
-                        : article.author!,
+                    article.author == null || article.author == "" ? 'Anonymous' : article.author!,
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -66,8 +66,8 @@ class NewsDetails extends StatelessWidget {
               Expanded(
                   child: ListView(
                 children: <Widget>[
-                  Stack(
-                    children: const <Widget>[
+                  const Stack(
+                    children: <Widget>[
                       Divider(
                         color: Colors.orangeAccent,
                         height: 40,
@@ -126,26 +126,20 @@ class NewsDetails extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: article.url == null
-                                ? 'https://news.google.com'
-                                : article.url!,
+                            text: article.url == null ? 'https://news.google.com' : article.url!,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () async {
-                                await launcher
-                                    .launchUrl(Uri.parse(article.url!));
+                                await launcher.launchUrl(Uri.parse(article.url!));
                               },
                           ),
                         ]),
                   ),
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Text(
-                      article.description ?? "For more info,\nOpen Url",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        wordSpacing: 3,
-                      ),
+                  const SizedBox(height: 10),
+                  Text(
+                    article.description ?? "For more info, Open Url",
+                    style: const TextStyle(
+                      fontSize: 16,
+                      wordSpacing: 3,
                     ),
                   ),
                 ],

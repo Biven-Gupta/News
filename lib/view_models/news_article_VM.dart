@@ -28,12 +28,16 @@ class NewsArticleViewModel {
   }
 
   String? get publishAt {
-    final dateTime =
-        DateFormat('yyyy-mm-ddTHH:mm:ssZ').parse(_newsArticle.publishAt!, true);
+    final dateTime = DateFormat('yyyy-mm-ddTHH:mm:ssZ').parse(_newsArticle.publishAt!, true);
     return DateFormat.yMMMMEEEEd('en-us').format(dateTime).toString();
   }
 
   String? get content {
     return _newsArticle.content;
+  }
+
+  @override
+  String toString() {
+    return 'NewsArticleViewModel{_newsArticle: $_newsArticle}';
   }
 }

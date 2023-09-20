@@ -28,4 +28,9 @@ class NewsArticle {
       content: json['content'],
     );
   }
+
+  @override
+  String toString() {
+    return 'NewsArticle{title: $title, author: $author, description: $description, urlToImage: $urlToImage, url: $url, publishAt: $publishAt, content: $content}';
+  }
 }
